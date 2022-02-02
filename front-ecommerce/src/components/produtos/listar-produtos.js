@@ -16,18 +16,28 @@ function ListarProdutos() {
   ];
 
   function render() {
-    <Card style={{ width: '18rem', margin: '10px', float: 'lefts' }}>
+    let key=1;
+    const cards = produtos.map(produto=>
+    <Card 
+      key={key}
+      data-testid={'card' + key++}
+      style={{ width: '18rem', margin: '10px', float: 'lefts' }}>
       <Card.Img variant="top" src={placeholder} />
       <Card.Body className="text-center">
         <Card.Title style={{ height: '40px' }}>
-          {/*nome do produto*/}
+          {produto.nome}
         </Card.Title>
         <Card.Text>Descrição do produto...</Card.Text>
-        <Button variant="success" style={{ width: '100%' }}
+        <Button 
+        variant="success" 
+        style={{ width: '100%' }}
         onClick={}
-        >Comprar ({/*preço do produto*/})</Button>
+        >Comprar ({produto.preco})
+        </Button>
       </Card.Body>
-    </Card>;
+    </Card>
+    );
+    return cards;
   }
 
   return render();
