@@ -1,5 +1,7 @@
+import ListarProdutos from './listar-produtos';
+
 function Produtos() {
-  return <h1>Produtos</h1>;
+  return <ListarProdutos />;
 }
 
 export default Produtos;

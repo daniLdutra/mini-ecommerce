@@ -1,7 +1,5 @@
 import placeholder from '../../images/286x180.png';
-import { Card, CardImg } from 'react-bootstrap';
-import Button from 'react-bootstrap';
-import { func } from 'prop-types';
+import { Button, Card, CardImg } from 'react-bootstrap';
 
 function ListarProdutos() {
   const produtos = [
@@ -15,28 +13,34 @@ function ListarProdutos() {
     { nome: 'TypeScript na prática', preco: 'R$ 9,99' },
   ];
 
+  function handleComprar(event, produto) {
+    event.preventDefault();
+    //adicionar produto
+    //exibir mensagem de sucesso
+  }
+
   function render() {
-    let key=1;
-    const cards = produtos.map(produto=>
-    <Card 
-      key={key}
-      data-testid={'card' + key++}
-      style={{ width: '18rem', margin: '10px', float: 'lefts' }}>
-      <Card.Img variant="top" src={placeholder} />
-      <Card.Body className="text-center">
-        <Card.Title style={{ height: '40px' }}>
-          {produto.nome}
-        </Card.Title>
-        <Card.Text>Descrição do produto...</Card.Text>
-        <Button 
-        variant="success" 
-        style={{ width: '100%' }}
-        onClick={}
-        >Comprar ({produto.preco})
-        </Button>
-      </Card.Body>
-    </Card>
-    );
+    let key = 1;
+    const cards = produtos.map((produto) => (
+      <Card
+        key={key}
+        data-testid={'card' + key++}
+        style={{ width: '18rem', margin: '10px', float: 'left' }}
+      >
+        <CardImg variant="top" src={placeholder} />
+        <Card.Body className="text-center">
+          <Card.Title style={{ height: '40px' }}>{produto.nome}</Card.Title>
+          <Card.Text>Descrição do produto...</Card.Text>
+          <Button
+            variant="success"
+            style={{ width: '100%' }}
+            onClick={(event) => handleComprar(event, produto)}
+          >
+            Comprar ({produto.preco})
+          </Button>
+        </Card.Body>
+      </Card>
+    ));
     return cards;
   }
 
