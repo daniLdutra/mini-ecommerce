@@ -1,7 +1,8 @@
 import placeholder from '../../images/286x180.png';
 import { Button, Card, CardImg } from 'react-bootstrap';
+import Proptypes from 'prop-types';
 
-function ListarProdutos() {
+function ListarProdutos(props) {
   const produtos = [
     { nome: 'Aprenda Java', preco: 'R$ 59,99' },
     { nome: 'JavaScript em 24 horas', preco: 'R$ 19,99' },
@@ -15,8 +16,8 @@ function ListarProdutos() {
 
   function handleComprar(event, produto) {
     event.preventDefault();
-    //adicionar produto
-    //exibir mensagem de sucesso
+    props.adicionarProduto(produto);
+    props.exibirMensagem(produto);
   }
 
   function render() {
@@ -46,5 +47,10 @@ function ListarProdutos() {
 
   return render();
 }
+
+ListarProdutos.propTypes = {
+  adicionarProduto: Proptypes.func.isRequired,
+  exibirMensagem: Proptypes.func.isRequired,
+};
 
 export default ListarProdutos;
