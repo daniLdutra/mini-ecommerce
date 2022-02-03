@@ -13,7 +13,7 @@ function Produtos(props) {
 
   function exibirMensagem(produto) {
     setExibirMsg(true);
-    setProduto(produto);
+    setProduto(produto.nome);
     setTimeout(() => {
       setExibirMsg(false);
     }, 3000);
@@ -26,7 +26,7 @@ function Produtos(props) {
       </Alert>
       <ListarProdutos
         exibirMensagem={exibirMensagem}
-        adicionarProduto={adicionarProduto}
+        adicionarProduto={props.adicionarProduto}
       />
     </div>
   );
