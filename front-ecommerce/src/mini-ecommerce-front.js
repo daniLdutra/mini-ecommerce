@@ -11,6 +11,7 @@ function MiniEcommerce() {
   const [total, setTotal] = useState('0,00');
 
   function adicionarProduto(produto) {
+    //copia do objeto carrinho
     const objCarrinho = Object.assign({}, carrinho);
     //atualizar a quantidade
     let novoProduto = true;
@@ -21,7 +22,13 @@ function MiniEcommerce() {
       }
     });
     //adicionar novo produto ao carrinho
-
+    if (novoProduto) {
+      objCarrinho.produtos.push({
+        nome: produto.nome,
+        preco: produto.preco,
+        quantidade: 1,
+      });
+    }
     setCarrinho(objCarrinho);
   }
 
