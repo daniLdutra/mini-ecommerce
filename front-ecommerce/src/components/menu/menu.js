@@ -19,7 +19,14 @@ function Menu() {
                 &nbsp; Carrinho
               </div>
             }
-          ></NavDropdown>
+          >
+            <NavDropdown.Item href="">
+              <FontAwesomeIcon icon={faShoppingBasket} />
+              &nbsp;
+              <strong>Produtos</strong>
+            </NavDropdown.Item>
+            <NavDropdown.Divider />
+          </NavDropdown>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
