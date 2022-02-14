@@ -26,6 +26,11 @@ function Menu() {
               <strong>Produtos</strong>
             </NavDropdown.Item>
             <NavDropdown.Divider />
+            {/*Itens do carrinho*/}
+            <NavDropdown.Divider />
+            <NavDropdown.Item href="" data-testid="total-carrinho">
+              Total: R$ {/* chamar função de cálculo de total */}
+            </NavDropdown.Item>
           </NavDropdown>
         </Nav>
       </Navbar.Collapse>
