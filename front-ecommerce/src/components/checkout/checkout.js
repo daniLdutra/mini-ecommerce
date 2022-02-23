@@ -189,6 +189,18 @@ function Checkout(props) {
           </Col>
         </Form.Group>
       </Form>
+
+      <Modal show={true} data-testid="modal-compra-sucesso">
+        <Modal.Header closeButton>
+          <Modal.Title>Compra realizada com sucesso!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Um email de confirmação foi enviado com os detalhes da transação.
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="success">Continuar</Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }
