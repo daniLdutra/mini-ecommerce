@@ -8,6 +8,18 @@ import {
 import PropTypes from 'prop-types';
 
 function Menu(props) {
+  function calcularTotal() {
+    if (props.produtos.length === 0) {
+      return '0,00';
+    }
+    let total = 0;
+    props.produtos.forEach((produto) => {
+      let preco = produto.preco.replace(',', '.').replace('R$ ', '');
+      total += parseFloat(preco) * produto.quantidade;
+    });
+    return total.toFixed(2).toString().replace('.', ',');
+  }
+
   return (
     <Navbar bg="dark" variant="dark">
       <Navbar.Brand href="">Mini Ecommerce</Navbar.Brand>
@@ -30,14 +42,14 @@ function Menu(props) {
             {/*Itens do carrinho*/}
             <NavDropdown.Divider />
             <NavDropdown.Item href="" data-testid="total-carrinho">
-              Total: R$ {/* chamar função de cálculo de total */}
+              Total: R$ {calcularTotal()}
             </NavDropdown.Item>
             <span className={props.produtos.length === 0 ? 'hidden' : null}>
               <NavDropdown.Divider />
               <NavDropdown.Item
                 href=""
                 style={{ color: 'green' }}
-                onClick={props.handleExibirCheckout}
+                onClick={() => props.handleExibirCheckout(calcularTotal())}
               >
                 <FontAwesomeIcon icon={faCashRegister} />
                 &nbsp; Finalizar compra
