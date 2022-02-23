@@ -143,6 +143,30 @@ function Checkout(props) {
             </Form.Control.Feedback>
           </Col>
         </Form.Group>
+
+        <Form.Group as={Row} controlId="emailPromocional">
+          <Form.Label column sm={12}>
+            Deseja receber email com promoções?
+          </Form.Label>
+          <Form.Check
+            inline
+            name="emailPromocional"
+            type="radio"
+            id="promocaoSim"
+            value="S"
+            label="Sim"
+            style={{ marginLeft: '15px' }}
+          />
+          <Form.Check
+            inline
+            name="emailPromocional"
+            type="radio"
+            id="promocaoNao"
+            value="N"
+            label="Não"
+            style={{ marginLeft: '15px' }}
+          />
+        </Form.Group>
       </Form>
     </div>
   );
