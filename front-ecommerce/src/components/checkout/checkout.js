@@ -176,6 +176,18 @@ function Checkout(props) {
             data-testid="check-termos-condicoes"
           />
         </Form.Group>
+
+        <Form.Group as={Row} controlId="finalizarCompra">
+          <Col className="text-center" sm={12}>
+            <Button
+              type="submit"
+              variant="success"
+              data-testid="btn-finalizar-compra"
+            >
+              Finalizar compra
+            </Button>
+          </Col>
+        </Form.Group>
       </Form>
     </div>
   );
