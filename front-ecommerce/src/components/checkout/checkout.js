@@ -80,6 +80,23 @@ function Checkout(props) {
             </Form.Control.Feedback>
           </Col>
         </Form.Group>
+
+        <Form.Group as={Row} controlId="endereco">
+          <Form.Label column sm={3}>
+            Endereço
+          </Form.Label>
+          <Col sm={9}>
+            <Form.Control
+              type="text"
+              placeholder="Digite seu endereço completo"
+              name="endereco"
+              data-testid="txt-endereco"
+            />
+            <Form.Control.Feedback type="invalid">
+              Digite um endereço válido.
+            </Form.Control.Feedback>
+          </Col>
+        </Form.Group>
       </Form>
     </div>
   );
