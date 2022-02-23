@@ -63,6 +63,23 @@ function Checkout(props) {
             />
           </Col>
         </Form.Group>
+
+        <Form.Group as={Row} controlId="cpf">
+          <Form.Label column sm={3}>
+            CPF
+          </Form.Label>
+          <Col sm={9}>
+            <Form.Control
+              type="text"
+              placeholder="Digite seu CPF"
+              name="cpf"
+              data-testid="txt-cpf"
+            />
+            <Form.Control.Feedback type="invalid">
+              Digite um CPF válido.
+            </Form.Control.Feedback>
+          </Col>
+        </Form.Group>
       </Form>
     </div>
   );
