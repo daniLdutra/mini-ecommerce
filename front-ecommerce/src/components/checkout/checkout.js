@@ -97,6 +97,20 @@ function Checkout(props) {
             </Form.Control.Feedback>
           </Col>
         </Form.Group>
+
+        <Form.Group as={Row} controlId="estado">
+          <Form.Label column sm={3}>
+            Estado
+          </Form.Label>
+          <Col sm={9}>
+            <Form.Control as="select" name="estado" data-testid="txt-estado">
+              {/*Listar os estados aqui*/}
+            </Form.Control>
+            <Form.Control.Feedback type="invalid">
+              Selecione o seu estado.
+            </Form.Control.Feedback>
+          </Col>
+        </Form.Group>
       </Form>
     </div>
   );
