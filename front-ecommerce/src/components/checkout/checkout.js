@@ -45,6 +45,24 @@ function Checkout(props) {
             </Form.Control.Feedback>
           </Col>
         </Form.Group>
+
+        <Form.Group as={Row} controlId="dataNascimento">
+          <Form.Label column sm={3}>
+            Data de nascimento
+          </Form.Label>
+          <Col sm={9}>
+            <DatePicker
+              locale="pt"
+              peekNextMonth
+              showMonthDropdown
+              showYearDropdown
+              dropdownMode="select"
+              dateFormat="dd/MM/yyyy"
+              placeholderText="Selecione a data"
+              withPortal
+            />
+          </Col>
+        </Form.Group>
       </Form>
     </div>
   );
