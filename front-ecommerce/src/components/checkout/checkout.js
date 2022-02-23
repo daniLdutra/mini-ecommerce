@@ -167,6 +167,15 @@ function Checkout(props) {
             style={{ marginLeft: '15px' }}
           />
         </Form.Group>
+
+        <Form.Group as={Row} controlId="termosCondicoes">
+          <Form.Check
+            name="termoCondicoes"
+            label="Concordo com os termos e condições"
+            style={{ marginLeft: '15px' }}
+            data-testid="check-termos-condicoes"
+          />
+        </Form.Group>
       </Form>
     </div>
   );
