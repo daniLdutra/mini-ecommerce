@@ -3,8 +3,14 @@ import Menu from './menu';
 
 describe('Teste do componente de menu', () => {
   it('deve renderizar o componente sem erros', () => {
-    render(<Menu />);
-    const linkElement = screen.getByText(/menu/i);
+    render(
+      <Menu
+        produtos={[]}
+        handleExibirCheckout={() => false}
+        handleExibirProdutos={() => false}
+      />
+    );
+    const linkElement = screen.getByText(/mini ecommerce/i);
     expect(linkElement).toBeInTheDocument();
   });
 });
