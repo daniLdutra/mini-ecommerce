@@ -126,6 +126,23 @@ function Checkout(props) {
             </Form.Control.Feedback>
           </Col>
         </Form.Group>
+
+        <Form.Group as={Row} controlId="cep">
+          <Form.Label column sm={3}>
+            CEP
+          </Form.Label>
+          <Col sm={9}>
+            <Form.Control
+              type="text"
+              placeholder="Digite seu CEP"
+              name="cep"
+              data-testid="txt-cep"
+            ></Form.Control>
+            <Form.Control.Feedback type="invalid">
+              Digite o seu CEP.
+            </Form.Control.Feedback>
+          </Col>
+        </Form.Group>
       </Form>
     </div>
   );
