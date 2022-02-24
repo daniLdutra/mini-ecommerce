@@ -8,6 +8,22 @@ function ListarCidades(props) {
 
   const [cidades, setCidades] = useState([]);
 
+  useEffect(() => {
+    async function obterCidades() {
+      try {
+        let { data } = await axios.get(
+          CIDADES_URL.replace(':estado', props.estado)
+        );
+        setCidades(data);
+      } catch (err) {
+        setCidades([]);
+      }
+    }
+    if (props.estado !== '') {
+      obterCidades();
+    }
+  }, [props.estado]);
+
   return cidades.map((cidade) => (
     <option key={cidade} value={cidade} data-testid={cidade}>
       {cidade}
