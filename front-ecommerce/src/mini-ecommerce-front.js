@@ -44,7 +44,7 @@ function MiniEcommerce() {
   }
 
   return (
-    <div>
+    <div className="aq">
       <Menu
         produtos={carrinho.produtos}
         handleExibirProdutos={handleExibirProdutos}
