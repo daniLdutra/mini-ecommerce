@@ -3,6 +3,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import pt from 'date-fns/locale/pt';
 import PropTypes from 'prop-types';
+import ListarEstados from './listar-estados';
 
 registerLocale('pt', pt);
 
@@ -104,7 +105,7 @@ function Checkout(props) {
           </Form.Label>
           <Col sm={9}>
             <Form.Control as="select" name="estado" data-testid="txt-estado">
-              {/*Listar os estados aqui*/}
+              <ListarEstados />
             </Form.Control>
             <Form.Control.Feedback type="invalid">
               Selecione o seu estado.
@@ -202,7 +203,7 @@ function Checkout(props) {
         </Modal.Footer>
       </Modal>
 
-      <Modal show={true} data-testid="modal-erro-comprar">
+      <Modal show={false} data-testid="modal-erro-comprar">
         <Modal.Header closeButton>
           <Modal.Title>Erro ao processar pedido.</Modal.Title>
         </Modal.Header>
