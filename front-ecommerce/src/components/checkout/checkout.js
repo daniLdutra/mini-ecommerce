@@ -41,7 +41,7 @@ function Checkout(props) {
         }}
       >
         {({ handleSubmit, handleChange, values, touched, errors }) => (
-          <Form noValidate style={{ margin: '10px' }}>
+          <Form noValidate style={{ margin: '10px' }} onSubmit={handleSubmit}>
             <Form.Group as={Row} controlId="email">
               <Form.Label column sm={3}>
                 Email
@@ -52,6 +52,10 @@ function Checkout(props) {
                   placeholder="Digite o seu email"
                   name="email"
                   data-testid="txt-email"
+                  value={values.email}
+                  onChange={handleChange}
+                  isValid={touched.email && !errors.email} //possui erro !
+                  isInvalid={touched.email && !!errors.email} // não possui erro !!
                 />
                 <Form.Control.Feedback type="invalid">
                   Digite um email válido
