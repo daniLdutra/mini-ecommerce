@@ -112,6 +112,10 @@ function Checkout(props) {
                   placeholder="Digite seu CPF"
                   name="cpf"
                   data-testid="txt-cpf"
+                  value={values.cpf}
+                  onChange={handleChange}
+                  isValid={touched.cpf && !errors.cpf}
+                  isInvalid={touched.cpf && !!errors.cpf}
                 />
                 <Form.Control.Feedback type="invalid">
                   Digite um CPF válido.
