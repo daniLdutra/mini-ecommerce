@@ -20,11 +20,26 @@ function Checkout(props) {
     return props.visivel ? null : 'hidden';
   }
 
+  function finalizarCompra(values) {}
+
   return (
     <div fluid style={{ margin: '10px' }} className={visivel()}>
       <h3 className="text-center">Finalizar compra</h3>
 
-      <Formik>
+      <Formik
+        onSubmit={(values) => finalizarCompra(values)}
+        inicialValues={{
+          email: '',
+          nomeCompleto: '',
+          cpf: '',
+          endereco: '',
+          cidade: '',
+          estado: '',
+          cep: '',
+          termosCondicoes: false,
+          emailPromocional: 'S',
+        }}
+      >
         <Form noValidate style={{ margin: '10px' }}>
           <Form.Group as={Row} controlId="email">
             <Form.Label column sm={3}>
