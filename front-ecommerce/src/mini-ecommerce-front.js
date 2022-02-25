@@ -38,20 +38,38 @@ function MiniEcommerce() {
   }
 
   function handleExibirCheckout(total) {
-    handleExibirCheckout(true);
+    setExibirCheckout(true);
     setExibirProdutos(false);
     setTotal(total);
   }
 
+  function handleLimparCarrinho() {
+    setCarrinho({ produtos: [] });
+  }
+
   return (
     <div className="aq">
-      <Menu
-        produtos={carrinho.produtos}
-        handleExibirProdutos={handleExibirProdutos}
-        handleExibirCheckout={handleExibirCheckout}
-      />
-      <Produtos visivel={exibirProdutos} adicionarProduto={adicionarProduto} />
-      <Checkout />
+      {exibirCheckout ? (
+        <Checkout
+          visivel={exibirCheckout}
+          handleExibirProdutos={handleExibirProdutos}
+          total={total}
+          produtos={carrinho}
+          handleLimparCarrinho={handleLimparCarrinho}
+        />
+      ) : (
+        <>
+          <Menu
+            produtos={carrinho.produtos}
+            handleExibirProdutos={handleExibirProdutos}
+            handleExibirCheckout={handleExibirCheckout}
+          />
+          <Produtos
+            visivel={exibirProdutos}
+            adicionarProduto={adicionarProduto}
+          />
+        </>
+      )}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { Form, Row, Col, Button, Modal } from 'react-bootstrap';
+import { Form, Row, Col, Button, Modal, Container } from 'react-bootstrap';
 import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import pt from 'date-fns/locale/pt';
@@ -9,8 +9,12 @@ import ListarCidades from './listar-cidades';
 registerLocale('pt', pt);
 
 function Checkout(props) {
+  function visivel() {
+    return props.visivel ? null : 'hidden';
+  }
+
   return (
-    <div fluid style={{ margin: '10px' }}>
+    <div fluid style={{ margin: '10px' }} className={visivel()}>
       <h3 className="text-center">Finalizar compra</h3>
 
       <Form noValidate style={{ margin: '10px' }}>
@@ -216,5 +220,13 @@ function Checkout(props) {
     </div>
   );
 }
+
+Checkout.propTypes = {
+  visivel: PropTypes.bool.isRequired,
+  handleExibirProdutos: PropTypes.func.isRequired,
+  total: PropTypes.string.isRequired,
+  produtos: PropTypes.object.isRequired,
+  handleLimparCarrinho: PropTypes.func.isRequired,
+};
 
 export default Checkout;
