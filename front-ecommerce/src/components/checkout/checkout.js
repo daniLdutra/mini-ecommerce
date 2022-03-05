@@ -29,13 +29,13 @@ function Checkout(props) {
       <Formik
         onSubmit={(values) => finalizarCompra(values)}
         inicialValues={{
-          email: '',
-          nomeCompleto: '',
-          cpf: '',
-          endereco: '',
-          cidade: '',
-          estado: '',
-          cep: '',
+          email: 'i',
+          nomeCompleto: 'l',
+          cpf: '1',
+          endereco: '1',
+          cidade: '1',
+          estado: '1',
+          cep: '1',
           termosCondicoes: false,
           emailPromocional: 'S',
         }}
