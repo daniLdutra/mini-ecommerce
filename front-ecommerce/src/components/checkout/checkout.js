@@ -131,6 +131,10 @@ function Checkout(props) {
                     placeholder="Digite seu endereço completo"
                     name="endereco"
                     data-testid="txt-endereco"
+                    value={values.endereco}
+                    onChange={handleChange}
+                    isValid={touched.endereco && !errors.endereco}
+                    isInvalid={touched.endereco && !!errors.endereco}
                   />
                   <Form.Control.Feedback type="invalid">
                     Digite um endereço válido.
@@ -146,6 +150,10 @@ function Checkout(props) {
                     as="select"
                     name="estado"
                     data-testid="txt-estado"
+                    value={values.estado}
+                    onChange={handleChange}
+                    isValid={touched.estado && !errors.estado}
+                    isInvalid={touched.estado && !!errors.estado}
                   >
                     <ListarEstados />
                   </Form.Control>
@@ -159,7 +167,15 @@ function Checkout(props) {
                   Cidade
                 </Form.Label>
                 <Col sm={9}>
-                  <Form.Control as="select" name="cidade" data-testid="cidade">
+                  <Form.Control
+                    as="select"
+                    name="cidade"
+                    data-testid="cidade"
+                    value={values.cidade}
+                    onChange={handleChange}
+                    isValid={touched.cidade && !errors.cidade}
+                    isInvalid={touched.cidade && !!errors.cidade}
+                  >
                     <option value="">Selecione a cidade</option>
                     <ListarCidades estado={''} />
                   </Form.Control>
@@ -178,6 +194,10 @@ function Checkout(props) {
                     placeholder="Digite seu CEP"
                     name="cep"
                     data-testid="txt-cep"
+                    value={values.cep}
+                    onChange={handleChange}
+                    isValid={touched.cep && !errors.cep}
+                    isInvalid={touched.cep && !!errors.cep}
                   ></Form.Control>
                   <Form.Control.Feedback type="invalid">
                     Digite o seu CEP.
