@@ -28,14 +28,14 @@ function Checkout(props) {
 
       <Formik
         onSubmit={(values) => finalizarCompra(values)}
-        inicialValues={{
-          email: 'i',
-          nomeCompleto: 'l',
-          cpf: '1',
-          endereco: '1',
-          cidade: '1',
-          estado: '1',
-          cep: '1',
+        initialValues={{
+          email: '',
+          nomeCompleto: '',
+          cpf: '',
+          endereco: '',
+          cidade: '',
+          estado: '',
+          cep: '',
           termosCondicoes: false,
           emailPromocional: 'S',
         }}
@@ -74,6 +74,10 @@ function Checkout(props) {
                     placeholder="Digite o seu nome completo"
                     name="nomeCompleto"
                     data-testid="txt-nome-completo"
+                    value={values.nomeCompleto}
+                    onChange={handleChange}
+                    isValid={touched.nomeCompleto && !errors.nomeCompleto}
+                    isInvalid={touched.nomeCompleto && !!errors.nomeCompleto}
                   />
                   <Form.Control.Feedback type="invalid">
                     Digite seu nome completo (mínimo 5 caractéres).
