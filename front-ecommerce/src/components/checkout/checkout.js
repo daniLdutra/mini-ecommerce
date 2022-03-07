@@ -4,7 +4,7 @@ import { Form, Row, Col, Button, Modal } from 'react-bootstrap';
 import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import pt from 'date-fns/locale/pt';
-import PropTypes from 'prop-types';
+import PropTypes, { func } from 'prop-types';
 import ListarEstados from './listar-estados';
 import ListarCidades from './listar-cidades';
 
@@ -21,6 +21,21 @@ function Checkout(props) {
   }
 
   function finalizarCompra(values) {}
+
+  function handleDataNascimento(data) {
+    setDataNascimento(data);
+  }
+
+  function datePickerCss() {
+    if (!formEnviado) {
+      return 'form-control';
+    }
+    if (dataNascimento) {
+      return 'form-control is-valid';
+    } else {
+      return 'form-control is-invalid';
+    }
+  }
 
   return (
     <div fluid style={{ margin: '10px' }} className={visivel()}>
@@ -98,6 +113,9 @@ function Checkout(props) {
                     dateFormat="dd/MM/yyyy"
                     placeholderText="Selecione a data"
                     withPortal
+                    selected={dataNascimento}
+                    onChange={handleDataNascimento}
+                    className={datePickerCss()}
                   />
                 </Col>
               </Form.Group>
