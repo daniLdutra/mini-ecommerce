@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Formik } from 'formik';
+import { Formik, yupToFormErrors } from 'formik';
 import { Form, Row, Col, Button, Modal } from 'react-bootstrap';
 import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker, { registerLocale } from 'react-datepicker';
@@ -7,6 +7,7 @@ import pt from 'date-fns/locale/pt';
 import PropTypes, { func } from 'prop-types';
 import ListarEstados from './listar-estados';
 import ListarCidades from './listar-cidades';
+import * as yup from 'yup';
 
 registerLocale('pt', pt);
 
@@ -15,6 +16,18 @@ function Checkout(props) {
   const [formEnviado, setFormEnviado] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showErroModal, setShowErroModal] = useState(false);
+
+  const schema = yup.object({
+    email: yup.string().email().required(),
+    nomeCompleto: yup.string().required().min(5),
+    cpf: yup.string().required().min(14).max(14),
+    endereco: yup.string().required().min(5),
+    cidade: yup.string().required(),
+    estado: yup.string().required(),
+    cep: yup.string().required().min(9).max(9),
+    emailPromocional: yup.string().required(),
+    termosCondicoes: yup.boolean().oneOf([true]),
+  });
 
   function visivel() {
     return props.visivel ? null : 'hidden';
@@ -54,6 +67,7 @@ function Checkout(props) {
           termosCondicoes: false,
           emailPromocional: 'S',
         }}
+        validationSchema={schema}
       >
         {({ handleSubmit, handleChange, values, touched, errors }) => {
           console.log(values, 'valores');
@@ -195,7 +209,7 @@ function Checkout(props) {
                     isInvalid={touched.cidade && !!errors.cidade}
                   >
                     <option value="">Selecione a cidade</option>
-                    <ListarCidades estado={''} />
+                    <ListarCidades estado={values.estado} />
                   </Form.Control>
                   <Form.Control.Feedback type="invalid">
                     Selecione a sua cidade.
@@ -251,7 +265,7 @@ function Checkout(props) {
               </Form.Group>
               <Form.Group as={Row} controlId="termosCondicoes">
                 <Form.Check
-                  name="termoCondicoes"
+                  name="termosCondicoes"
                   label="Concordo com os termos e condições"
                   style={{ marginLeft: '15px' }}
                   data-testid="check-termos-condicoes"
