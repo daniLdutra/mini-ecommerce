@@ -10,10 +10,14 @@ import ListarCidades from './listar-cidades';
 import * as yup from 'yup';
 import { validarCpf, formatarCpf } from '../../utils/cpf-util';
 import formatarCep from '../../utils/cep.util';
+import axios from 'axios';
 
 registerLocale('pt', pt);
 
 function Checkout(props) {
+  const CHECKOUT_URL =
+    'http://localhost:3001/mini-ecommerce/checkout/finalizar-compra';
+
   const [dataNascimento, setDataNascimento] = useState(null);
   const [formEnviado, setFormEnviado] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -40,7 +44,23 @@ function Checkout(props) {
     return props.visivel ? null : 'hidden';
   }
 
-  function finalizarCompra(values) {}
+  async function finalizarCompra(dados) {
+    if (!dataNascimento) {
+      //verficação para saber se contém a data de nascimento
+      setFormEnviado(true);
+      return;
+    }
+    dados.dataNascimento = dataNascimento;
+    dados.produtos = JSON.stringify(props.produtos);
+    dados.total = `R$ ${props.total}`;
+    try {
+      await axios.post(CHECKOUT_URL, dados);
+      setShowModal(true);
+      props.handleLimparCarrinho();
+    } catch (err) {
+      setShowErroModal(true);
+    }
+  }
 
   function handleDataNascimento(data) {
     setDataNascimento(data);
@@ -134,7 +154,7 @@ function Checkout(props) {
                   Data de nascimento
                 </Form.Label>
                 <Col sm={9}>
-                  <DatePicker
+                  <DatePicker //DatePicker não está integrado com bootstrap
                     locale="pt"
                     peekNextMonth
                     showMonthDropdown
