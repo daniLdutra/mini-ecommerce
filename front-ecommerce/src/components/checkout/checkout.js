@@ -57,6 +57,15 @@ function Checkout(props) {
     }
   }
 
+  function handleContinuar() {
+    setShowModal(false);
+    props.handleExibirProdutos();
+  }
+
+  function handleFecharErroModal() {
+    setShowErroModal(false);
+  }
+
   return (
     <div fluid style={{ margin: '10px' }} className={visivel()}>
       <h3 className="text-center">Finalizar compra</h3>
@@ -310,7 +319,11 @@ function Checkout(props) {
         }}
       </Formik>
 
-      <Modal show={false} data-testid="modal-compra-sucesso">
+      <Modal
+        show={showModal}
+        data-testid="modal-compra-sucesso"
+        onHide={handleContinuar}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Compra realizada com sucesso!</Modal.Title>
         </Modal.Header>
@@ -318,17 +331,25 @@ function Checkout(props) {
           Um email de confirmação foi enviado com os detalhes da transação.
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="success">Continuar</Button>
+          <Button variant="success" onClick={handleContinuar}>
+            Continuar
+          </Button>
         </Modal.Footer>
       </Modal>
 
-      <Modal show={false} data-testid="modal-erro-comprar">
+      <Modal
+        show={showErroModal}
+        data-testid="modal-erro-comprar"
+        onHide={handleFecharErroModal}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Erro ao processar pedido.</Modal.Title>
         </Modal.Header>
         <Modal.Body>Tente novamente em instantes.</Modal.Body>
         <Modal.Footer>
-          <Button variant="warning">Continuar</Button>
+          <Button variant="warning" onClick={handleFecharErroModal}>
+            Continuar
+          </Button>
         </Modal.Footer>
       </Modal>
     </div>
