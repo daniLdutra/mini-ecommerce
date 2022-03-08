@@ -1,3 +1,30 @@
+export function formatarCpf(cpf) {
+  cpf = cpf.replace(/\D/g, ''); //substitui td o que não for número por string vazia.
+  if (cpf.length > 11) {
+    cpf = cpf.substring(0, 11);
+  }
+  switch (cpf.length) {
+    case 4:
+    case 5:
+    case 6:
+      cpf = cpf.replace(/(\d{3})(.*)/, '$1.$2'); //exemplo: 123.4
+      break;
+    case 7:
+    case 8:
+    case 9:
+      cpf = cpf.replace(/(\d{3})(\d{3})(.*)/, '$1.$2.$3'); //exemplo: 123.456.7
+      break;
+    case 10:
+    case 11:
+      cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(.*)/, '$1.$2.$3-$4');
+      //ex: 123.456.785-11
+      break;
+    default:
+      break;
+  }
+  return cpf;
+}
+
 export function validarCpf(cpf) {
   if (!cpf) {
     return false;

@@ -8,7 +8,7 @@ import PropTypes, { func } from 'prop-types';
 import ListarEstados from './listar-estados';
 import ListarCidades from './listar-cidades';
 import * as yup from 'yup';
-import { validarCpf } from '../../utils/cpf-util';
+import { validarCpf, formatarCpf } from '../../utils/cpf-util';
 
 registerLocale('pt', pt);
 
@@ -150,7 +150,12 @@ function Checkout(props) {
                     name="cpf"
                     data-testid="txt-cpf"
                     value={values.cpf}
-                    onChange={handleChange}
+                    onChange={(e) => {
+                      e.currentTarget.value = formatarCpf(
+                        e.currentTarget.value
+                      );
+                      handleChange(e);
+                    }}
                     isValid={touched.cpf && !errors.cpf}
                     isInvalid={touched.cpf && !!errors.cpf}
                   />
