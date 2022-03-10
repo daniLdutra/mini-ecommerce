@@ -29,7 +29,7 @@ function Menu(props) {
           <NavDropdown
             title={
               <div style={{ display: 'inline-block' }}>
-                <FontAwesomeIcon icon={faShoppingCart} drop="left" />
+                <FontAwesomeIcon icon={faShoppingCart} />
                 &nbsp; Carrinho
               </div>
             }

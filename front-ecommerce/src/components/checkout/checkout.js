@@ -87,7 +87,12 @@ function Checkout(props) {
   }
 
   return (
-    <div fluid style={{ margin: '10px' }} className={visivel()}>
+    <div
+      fluid
+      style={{ margin: '2rem' }}
+      className={visivel()}
+      className="jumbotron"
+    >
       <h3 className="text-center">Finalizar compra</h3>
 
       <Formik
@@ -108,8 +113,12 @@ function Checkout(props) {
         {({ handleSubmit, handleChange, values, touched, errors }) => {
           console.log(values, 'valores');
           return (
-            <Form noValidate style={{ margin: '10px' }} onSubmit={handleSubmit}>
-              <Form.Group as={Row} controlId="email">
+            <Form noValidate onSubmit={handleSubmit}>
+              <Form.Group
+                as={Row}
+                controlId="email"
+                style={{ marginTop: '0.8rem' }}
+              >
                 <Form.Label column sm={3}>
                   Email
                 </Form.Label>
@@ -129,7 +138,11 @@ function Checkout(props) {
                   </Form.Control.Feedback>
                 </Col>
               </Form.Group>
-              <Form.Group as={Row} controlId="nomeCompleto">
+              <Form.Group
+                as={Row}
+                controlId="nomeCompleto"
+                style={{ marginTop: '0.6rem' }}
+              >
                 <Form.Label column sm={3}>
                   Nome completo
                 </Form.Label>
@@ -149,7 +162,11 @@ function Checkout(props) {
                   </Form.Control.Feedback>
                 </Col>
               </Form.Group>
-              <Form.Group as={Row} controlId="dataNascimento">
+              <Form.Group
+                as={Row}
+                controlId="dataNascimento"
+                style={{ marginTop: '0.6rem' }}
+              >
                 <Form.Label column sm={3}>
                   Data de nascimento
                 </Form.Label>
@@ -169,7 +186,11 @@ function Checkout(props) {
                   />
                 </Col>
               </Form.Group>
-              <Form.Group as={Row} controlId="cpf">
+              <Form.Group
+                as={Row}
+                controlId="cpf"
+                style={{ marginTop: '0.6rem' }}
+              >
                 <Form.Label column sm={3}>
                   CPF
                 </Form.Label>
@@ -194,7 +215,11 @@ function Checkout(props) {
                   </Form.Control.Feedback>
                 </Col>
               </Form.Group>
-              <Form.Group as={Row} controlId="endereco">
+              <Form.Group
+                as={Row}
+                controlId="endereco"
+                style={{ marginTop: '0.6rem' }}
+              >
                 <Form.Label column sm={3}>
                   Endereço
                 </Form.Label>
@@ -214,7 +239,11 @@ function Checkout(props) {
                   </Form.Control.Feedback>
                 </Col>
               </Form.Group>
-              <Form.Group as={Row} controlId="estado">
+              <Form.Group
+                as={Row}
+                controlId="estado"
+                style={{ marginTop: '0.6rem' }}
+              >
                 <Form.Label column sm={3}>
                   Estado
                 </Form.Label>
@@ -235,7 +264,11 @@ function Checkout(props) {
                   </Form.Control.Feedback>
                 </Col>
               </Form.Group>
-              <Form.Group as={Row} controlId="cidade">
+              <Form.Group
+                as={Row}
+                controlId="cidade"
+                style={{ marginTop: '0.6rem' }}
+              >
                 <Form.Label column sm={3}>
                   Cidade
                 </Form.Label>
@@ -257,7 +290,11 @@ function Checkout(props) {
                   </Form.Control.Feedback>
                 </Col>
               </Form.Group>
-              <Form.Group as={Row} controlId="cep">
+              <Form.Group
+                as={Row}
+                controlId="cep"
+                style={{ marginTop: '0.6rem' }}
+              >
                 <Form.Label column sm={3}>
                   CEP
                 </Form.Label>
@@ -282,7 +319,11 @@ function Checkout(props) {
                   </Form.Control.Feedback>
                 </Col>
               </Form.Group>
-              <Form.Group as={Row} controlId="emailPromocional">
+              <Form.Group
+                as={Row}
+                controlId="emailPromocional"
+                style={{ marginTop: '0.8rem' }}
+              >
                 <Form.Label column sm={12}>
                   Deseja receber email com promoções?
                 </Form.Label>
@@ -309,7 +350,11 @@ function Checkout(props) {
                   onChange={handleChange}
                 />
               </Form.Group>
-              <Form.Group as={Row} controlId="termosCondicoes">
+              <Form.Group
+                as={Row}
+                controlId="termosCondicoes"
+                style={{ marginTop: '0.8rem' }}
+              >
                 <Form.Check
                   name="termosCondicoes"
                   label="Concordo com os termos e condições"
@@ -323,11 +368,15 @@ function Checkout(props) {
                   }
                 />
               </Form.Group>
-              <Form.Group as={Row} controlId="finalizarCompra">
+              <Form.Group
+                as={Row}
+                controlId="finalizarCompra"
+                style={{ marginTop: '0.6rem' }}
+              >
                 <Col className="text-center" sm={12}>
                   <Button
                     type="submit"
-                    variant="success"
+                    style={{ backgroundColor: 'limegreen' }}
                     data-testid="btn-finalizar-compra"
                   >
                     Finalizar compra
